@@ -1,0 +1,191 @@
+{
+  "base_model": "EfficientNet-B0-FFPP-C23",
+  "base_model_version": "1.0.0",
+  "base_model_checksum": "2a7963b787ece259",
+  "active_version": "visual-v8",
+  "visual_adapter_status": "ACTIVE",
+  "audio_adapter_status": "BASE ONLY / NOT TRAINED",
+  "latest_update": "2026-10-07T05:02:37.819405+00:00",
+  "history": [
+    {
+      "version": "visual-v1",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "dataset_version": "ds-v1",
+      "timestamp": "2026-10-07T03:17:54.164324+00:00",
+      "samples_used": 1,
+      "epochs_run": 5,
+      "initial_loss": 0.7327,
+      "final_loss": 0.0,
+      "loss_reduction": 0.7327,
+      "trainable_parameters": 84938,
+      "param_checksum_before": "243298c2ebc96a23",
+      "param_checksum_after": "ba76dacbc820ecdb",
+      "parameters_changed": true
+    },
+    {
+      "version": "visual-v2",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "dataset_version": "ds-v2",
+      "timestamp": "2026-10-07T03:18:15.247913+00:00",
+      "samples_used": 2,
+      "epochs_run": 5,
+      "initial_loss": 0.0523,
+      "final_loss": 0.0,
+      "loss_reduction": 0.0523,
+      "trainable_parameters": 84938,
+      "param_checksum_before": "ba76dacbc820ecdb",
+      "param_checksum_after": "a7812885824abd3f",
+      "parameters_changed": true
+    },
+    {
+      "version": "visual-v3",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "dataset_version": "ds-v3",
+      "timestamp": "2026-10-07T03:18:26.143467+00:00",
+      "samples_used": 3,
+      "epochs_run": 5,
+      "initial_loss": 0.0,
+      "final_loss": 0.0,
+      "loss_reduction": 0.0,
+      "trainable_parameters": 84938,
+      "param_checksum_before": "a7812885824abd3f",
+      "param_checksum_after": "05532fd978aa4410",
+      "parameters_changed": true
+    },
+    {
+      "version": "visual-v4",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "dataset_version": "ds-v4",
+      "timestamp": "2026-10-07T03:35:46.668449+00:00",
+      "samples_used": 4,
+      "epochs_run": 5,
+      "initial_loss": 0.0,
+      "final_loss": 0.0,
+      "loss_reduction": 0.0,
+      "trainable_parameters": 84938,
+      "param_checksum_before": "05532fd978aa4410",
+      "param_checksum_after": "1ebf4c0b131f8390",
+      "parameters_changed": true
+    },
+    {
+      "version": "visual-v5",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "base_model_checksum": "2a7963b787ece259",
+      "dataset_version": "ds-v5",
+      "timestamp": "2026-10-07T04:32:55.164048+00:00",
+      "samples_used": 5,
+      "class_balance": {
+        "real": 5,
+        "fake": 0
+      },
+      "epochs_run": 5,
+      "initial_loss": 0.0,
+      "final_loss": 0.0,
+      "accuracy": 1.0,
+      "balanced_accuracy": 0.5,
+      "confusion_matrix": {
+        "tp": 0,
+        "tn": 9,
+        "fp": 0,
+        "fn": 0
+      },
+      "status_note": "Experimental adapter \u2014 insufficient validation data",
+      "trainable_parameters": 84938,
+      "param_checksum_before": "1ebf4c0b131f8390",
+      "param_checksum_after": "fa25df29d3dfe90a",
+      "parameters_changed": true
+    },
+    {
+      "version": "visual-v6",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "base_model_checksum": "2a7963b787ece259",
+      "dataset_version": "ds-v6",
+      "timestamp": "2026-10-07T04:40:48.157094+00:00",
+      "samples_used": 6,
+      "class_balance": {
+        "real": 6,
+        "fake": 0
+      },
+      "epochs_run": 5,
+      "initial_loss": 0.0,
+      "final_loss": 0.0,
+      "accuracy": 1.0,
+      "balanced_accuracy": 0.5,
+      "confusion_matrix": {
+        "tp": 0,
+        "tn": 10,
+        "fp": 0,
+        "fn": 0
+      },
+      "status_note": "Validated split active",
+      "trainable_parameters": 84938,
+      "param_checksum_before": "fa25df29d3dfe90a",
+      "param_checksum_after": "4d0d8a5480edfe87",
+      "parameters_changed": true
+    },
+    {
+      "version": "visual-v7",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "base_model_checksum": "2a7963b787ece259",
+      "dataset_version": "ds-v7",
+      "timestamp": "2026-10-07T04:49:50.455348+00:00",
+      "samples_used": 7,
+      "class_balance": {
+        "real": 7,
+        "fake": 0
+      },
+      "epochs_run": 5,
+      "initial_loss": 0.0,
+      "final_loss": 0.0,
+      "accuracy": 1.0,
+      "balanced_accuracy": 0.5,
+      "confusion_matrix": {
+        "tp": 0,
+        "tn": 11,
+        "fp": 0,
+        "fn": 0
+      },
+      "status_note": "Validated split active",
+      "trainable_parameters": 84938,
+      "param_checksum_before": "4d0d8a5480edfe87",
+      "param_checksum_after": "8849c711acb51d03",
+      "parameters_changed": true
+    },
+    {
+      "version": "visual-v8",
+      "base_model": "EfficientNet-B0-FFPP-C23",
+      "base_model_version": "1.0.0",
+      "base_model_checksum": "2a7963b787ece259",
+      "dataset_version": "ds-v8",
+      "timestamp": "2026-10-07T05:02:37.819391+00:00",
+      "samples_used": 8,
+      "class_balance": {
+        "real": 8,
+        "fake": 0
+      },
+      "epochs_run": 15,
+      "initial_loss": 0.0557,
+      "final_loss": 0.0,
+      "accuracy": 1.0,
+      "balanced_accuracy": 0.5,
+      "confusion_matrix": {
+        "tp": 0,
+        "tn": 21,
+        "fp": 0,
+        "fn": 0
+      },
+      "status_note": "Validated split active",
+      "trainable_parameters": 84938,
+      "param_checksum_before": "8849c711acb51d03",
+      "param_checksum_after": "d0f0530848929b5b",
+      "parameters_changed": true
+    }
+  ]
+}

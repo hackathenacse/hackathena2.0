@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-carbon-black: #000000;
+  --color-paper-white: #ffffff;
+  --color-warm-canvas: #e5e5e5;
+  --color-mist-gray: #f3f3f3;
+  --color-ash: #c6c6c6;
+  --color-smoke: #979797;
+  --color-slate: #444444;
+  --color-graphite: #2f2f2f;
+  --color-mint-chip: #d1ffca;
+  --color-voltage-yellow: #fff100;
+
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-40: 40px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
+
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-card: 24px;
+  --radius-card-lg: 32px;
+  --radius-pill: 9999px;
+
+  --page-max-width: 1200px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-warm-canvas);
+    color: var(--color-carbon-black);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #e5e5e5;
+}
+::-webkit-scrollbar-thumb {
+  background: #c6c6c6;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #979797;
+}
+
+/* Brutalist Editorial Card Presets */
+.editorial-card {
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+  border-radius: 24px;
+  box-shadow: none;
+}
+
+.editorial-card-lg {
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+  border-radius: 32px;
+  box-shadow: none;
+}
+
+.editorial-inverted-card {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 32px;
+  box-shadow: none;
+}
+
+.editorial-btn-primary {
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  border: 1px solid #000000;
+}
+
+.editorial-btn-primary:hover {
+  opacity: 0.88;
+}
+
+.editorial-btn-secondary {
+  background-color: transparent;
+  color: #000000;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #000000;
+  transition: background-color 0.15s ease;
+}
+
+.editorial-btn-secondary:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.editorial-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

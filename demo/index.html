@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentica — Live Extension Verification Lab</title>
+  <style>
+    :root {
+      --bg-dark: #040812;
+      --bg-card: #0b1325;
+      --border: #1e293b;
+      --cyan: #06b6d4;
+      --cyan-glow: rgba(6, 182, 212, 0.25);
+      --red: #ef4444;
+      --amber: #f59e0b;
+      --green: #10b981;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--cyan);
+      font-size: 12px;
+      font-family: monospace;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    p.lead {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Steps box */
+    .steps-box {
+      background: rgba(11, 19, 37, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+
+    .steps-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 10px;
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--cyan);
+      color: #040812;
+      font-weight: 800;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .step-text strong {
+      color: #fff;
+    }
+
+    /* Video Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .video-card:hover {
+      border-color: rgba(6, 182, 212, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-safe { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .tag-synthetic { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .tag-scam { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .video-container {
+      background: #000;
+      position: relative;
+      aspect-ratio: 4 / 3;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .transcript-quote {
+      font-family: monospace;
+      font-size: 11px;
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid var(--cyan);
+      padding: 6px 10px;
+      border-radius: 0 4px 4px 0;
+      color: #cbd5e1;
+      margin-top: auto;
+    }
+
+    footer {
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <header>
+      <div class="badge">🛡️ Authentica Extension Demo Environment</div>
+      <h1>Live Extension Verification Lab</h1>
+      <p class="lead">Test tab capture, real-time audio preservation, and automated Stage 1–3 backend analysis against real media streams.</p>
+    </header>
+
+    <div class="steps-box">
+      <div class="steps-title">Verification Protocol</div>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Play any video below</strong> and adjust your audio volume.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">Open the <strong>Authentica Extension</strong> popup from your toolbar.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">Click <strong>"Scan Current Tab"</strong>. Notice tab sound continues playing while capturing!</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-text">Inspect the <strong>warning summary</strong> or click <strong>"Open Full Analysis"</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      
+      <!-- Video 1: Authentic -->
+      <div class="video-card">
+        <div class="card-header">
+          <span class="card-title">Case 1: Standard Demonstration</span>
+          <span class="card-tag tag-safe">Expected: Low Risk</span>
+        </div>
+        <div class="video-container">
+          <video controls loop playsinline preload="auto">
+            <source src="media/authentic_sample.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Standard briefing with benign speech and test pattern frames. Expected to trigger NO_ACTION_FLAGGED with low fraud intent.</p>
+          <div class="transcript-quote">
+            "Welcome to today general product demonstration. All system components are functioning as expected."
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2: Synthetic / Forensic Visual Artifacts -->
+      <div class="video-card">
+        <div class="card-header">
+          <span class="card-title">Case 2: Synthetic Artifacts</span>
+          <span class="card-tag tag-synthetic">Forensic Test</span>
+        </div>
+        <div class="video-container">
+          <video controls loop playsinline preload="auto">
+            <source src="media/deepfake_sample.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Simulated sensory verification clip testing high-frequency frame anomalies and anti-spoof spectral models.</p>
+          <div class="transcript-quote">
+            "Hello, this is a video analysis verification sample for forensic media testing."
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 3: Urgent CEO Wire Scam -->
+      <div class="video-card">
+        <div class="card-header">
+          <span class="card-title">Case 3: Urgent CEO Wire Scam</span>
+          <span class="card-tag tag-scam">Expected: STOP & VERIFY</span>
+        </div>
+        <div class="video-container">
+          <video controls loop playsinline preload="auto">
+            <source src="media/scam_ceo_wire.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">High-risk executive impersonation combining authority, urgency, secrecy, and immediate funds transfer directives.</p>
+          <div class="transcript-quote">
+            "This is the CEO speaking. We have an urgent acquisition deal. Transfer funds immediately to the new account number and keep this strictly confidential."
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      Authentica AI Fraud &amp; Deepfake Detection Platform &bull; Hackathon Extension Evaluation Build
+    </footer>
+
+  </div>
+</body>
+</html>

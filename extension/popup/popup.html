@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentica Shield</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    
+    <!-- Top Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="shield-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">AUTHENTICA</span>
+          <span class="brand-sub">AI Media Shield</span>
+        </div>
+      </div>
+      <button id="btnSettingsToggle" class="icon-btn" title="Settings" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Settings Overlay Drawer -->
+    <div id="settingsDrawer" class="settings-drawer hidden">
+      <div class="drawer-header">
+        <span>Settings</span>
+        <button id="btnCloseSettings" class="close-btn">&times;</button>
+      </div>
+      <div class="drawer-body">
+        <label for="inputApiUrl" class="field-label">API Backend URL (Tunnel / Laptop)</label>
+        <input type="text" id="inputApiUrl" class="text-input" placeholder="https://anatomy-enemies-acoustic-grade.trycloudflare.com" />
+
+        <label for="inputWebAppUrl" class="field-label">Web App URL (Vercel Deployment)</label>
+        <input type="text" id="inputWebAppUrl" class="text-input" placeholder="https://authenticax-two.vercel.app" />
+
+        <div class="drawer-actions">
+          <button id="btnSaveSettings" class="btn-primary">Save Settings</button>
+        </div>
+        <div id="settingsFeedback" class="feedback-msg"></div>
+      </div>
+    </div>
+
+    <!-- Active Tab Context Pill -->
+    <div class="tab-pill">
+      <span class="tab-pill-icon">🌐</span>
+      <span id="tabHost" class="tab-pill-host">Detecting tab...</span>
+    </div>
+
+    <!-- MAIN HERO CONTENT -->
+    <main id="mainContent" class="main-content">
+
+      <!-- VIEW 1: PROTECTION INACTIVE (IDLE) -->
+      <section id="viewIdle" class="view-card">
+        <div class="hero-icon-wrap idle-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h2 class="view-title">Tab Protection Inactive</h2>
+        <p class="view-desc">
+          Enable live protection to automatically monitor this tab for deepfakes, voice clones, and social engineering fraud.
+        </p>
+        <button id="btnEnableProtection" class="btn-primary btn-glow">
+          <span>🛡️ Turn On Protection</span>
+        </button>
+        <button id="btnQuickScan" class="btn-secondary">
+          <span>⚡ Quick Scan (12s)</span>
+        </button>
+      </section>
+
+      <!-- VIEW 2: MONITORING ACTIVE & SAFE -->
+      <section id="viewMonitoringSafe" class="view-card hidden">
+        <div class="hero-icon-wrap safe-icon">
+          <div class="pulse-ring"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="safe-badge">🟢 Tab Protected &amp; Safe</div>
+        <h2 class="view-title">Live Protection Active</h2>
+        <p class="view-desc">
+          Continuously analyzing tab media in the background. If audio or video manipulation is detected, you will be warned immediately.
+        </p>
+        <div class="stat-pills">
+          <div class="stat-pill">
+            <span class="stat-label">Status:</span>
+            <span class="stat-val text-green">All Clear</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">Checks:</span>
+            <span id="statCycles" class="stat-val">0</span>
+          </div>
+        </div>
+        <button id="btnStopProtection" class="btn-danger-outline">
+          <span>⏸️ Stop Protection</span>
+        </button>
+      </section>
+
+      <!-- VIEW 3: THREAT / RISK DETECTED ALERT -->
+      <section id="viewThreatAlert" class="view-card threat-card hidden">
+        <div class="hero-icon-wrap threat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div id="threatBadgeHeader" class="threat-badge">🚨 THREAT DETECTED</div>
+        <div id="threatActionBanner" class="action-banner-text">STOP AND VERIFY</div>
+        
+        <div class="threat-details-box">
+          <!-- Dimension 1: AI Deepfake Origin -->
+          <div class="forensic-dimension-box">
+            <div class="dimension-header">
+              <span class="dimension-label">1. AI Deepfake Origin</span>
+              <span id="badgeAiStatus" class="dimension-status status-fake">🤖 AI DETECTED</span>
+            </div>
+            <div id="descAiStatus" class="dimension-desc">Synthetic face manipulation or AI voice detected.</div>
+          </div>
+
+          <!-- Dimension 2: Harm & Fraud Intent -->
+          <div class="forensic-dimension-box">
+            <div class="dimension-header">
+              <span class="dimension-label">2. Harm &amp; Fraud Intent</span>
+              <span id="badgeHarmStatus" class="dimension-status status-harm">🚨 HARMFUL SCAM</span>
+            </div>
+            <div id="descHarmStatus" class="dimension-desc">Coercive urgency or direct financial extraction flagged.</div>
+          </div>
+
+          <!-- Detailed Signals -->
+          <div class="threat-row" id="rowAudioRisk">
+            <span class="threat-dot dot-red"></span>
+            <span id="textAudioRisk" class="threat-text">Audio synthetic voice spoof flagged</span>
+          </div>
+          <div class="threat-row" id="rowVideoRisk">
+            <span class="threat-dot dot-red"></span>
+            <span id="textVideoRisk" class="threat-text">Manipulated visual face frames flagged</span>
+          </div>
+          <div class="threat-row" id="rowFraudRisk">
+            <span class="threat-dot dot-amber"></span>
+            <span id="textFraudRisk" class="threat-text">Social engineering directive flagged</span>
+          </div>
+        </div>
+
+        <button id="btnOpenThreatReport" class="btn-primary btn-glow">
+          <span>📄 Open Full Analysis Report ↗</span>
+        </button>
+        <button id="btnDismissThreat" class="btn-secondary">
+          <span>Dismiss &amp; Resume Monitoring</span>
+        </button>
+      </section>
+
+      <!-- VIEW 4: QUICK SCAN RUNNING -->
+      <section id="viewScanning" class="view-card hidden">
+        <div class="countdown-circle">
+          <span id="countdownVal">10</span>
+          <span class="countdown-unit">sec</span>
+        </div>
+        <h2 id="scanningTitle" class="view-title">Capturing Tab Media</h2>
+        <p id="scanningDesc" class="view-desc">Audio playback remains audible while analyzing...</p>
+        <button id="btnCancelScan" class="btn-secondary">Cancel</button>
+      </section>
+
+      <!-- VIEW 5: SCAN COMPLETED / ALL CLEAR (SAFE) -->
+      <section id="viewScanClean" class="view-card hidden">
+        <div class="hero-icon-wrap safe-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div id="cleanBadgeText" class="safe-badge">🟢 NO THREAT DETECTED</div>
+        <div id="cleanActionBanner" class="action-banner-text text-green">NO ACTION FLAGGED</div>
+        <p id="cleanDescText" class="view-desc">
+          Analyzed sampled frames and audio track. No coercive fraud or extortion patterns were detected.
+        </p>
+        <button id="btnOpenCleanReport" class="btn-primary btn-glow">
+          <span>📄 View Full Forensic Report ↗</span>
+        </button>
+        <button id="btnCleanScanAgain" class="btn-secondary">
+          <span>Done / Scan Again</span>
+        </button>
+      </section>
+
+      <!-- VIEW 6: ERROR OR RESTRICTED -->
+      <section id="viewError" class="view-card hidden">
+        <div class="hero-icon-wrap error-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h2 class="view-title">Capture Restricted</h2>
+        <p id="errorMsgText" class="view-desc text-muted">
+          Cannot capture internal browser tabs or offline backend.
+        </p>
+        <button id="btnResetView" class="btn-primary">Back</button>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="node-status">
+        <span class="status-dot"></span>
+        <span id="backendStatusLabel">Connecting...</span>
+      </div>
+      <button id="btnOpenWeb" class="link-btn" title="Open Authentica Dashboard">Web App ↗</button>
+    </footer>
+
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

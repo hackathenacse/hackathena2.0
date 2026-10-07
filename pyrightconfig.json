@@ -1,0 +1,12 @@
+{
+  "venvPath": "/Users/rachelrosenn/hackthena",
+  "venv": "venv",
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [
+        "backend"
+      ]
+    }
+  ]
+}
